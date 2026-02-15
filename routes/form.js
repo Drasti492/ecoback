@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
       loanAmount: loan_amount
     });
 
-    res.redirect("https://ecocashloans.vercel.app/success.html");
+    res.redirect("https://vodapayloans.vercel.app/pages/success.html");
   } catch (error) {
     res.status(500).send("Submission failed");
   }
