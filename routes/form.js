@@ -15,6 +15,9 @@ router.post("/", async (req, res) => {
 
     res.redirect("https://vodapayloans.vercel.app/pages/success.html");
   } catch (error) {
+    console.error(error);
     res.status(500).send("Submission failed");
   }
 });
+
+export default router; 
